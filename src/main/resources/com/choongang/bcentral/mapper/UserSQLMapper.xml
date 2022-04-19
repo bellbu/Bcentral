@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.choongang.bcentral.mapper.UserSQLMapper">
+	<select id="selectUser" resultType="com.choongang.bcentral.user.vo.UserVo">
+		select * from bp_user where user_id = #{user_id}
+	</select>
+	
+	<select id="getAuthList" resultType="String">
+		select authority from bp_user where user_id = #{user_id}
+	</select>
+	
+	<insert id="registerUser">
+		insert into bp_user values (
+			nextval('bp_user_seq'),
+			#{user_id},
+			#{user_pw},
+			#{name},
+			'ROLE_USER',
+			#{phone},
+			#{email},
+			#{dsc},
+			now(),
+			null,
+			#{parent}
+		)
+	</insert>
+	
+	<select id="getTotalUserList" resultType="com.choongang.bcentral.user.vo.UserVo">
+		with RECURSIVE req_user AS 
+	        (
+	        SELECT * 
+			FROM bp_user t1 
+			WHERE t1.user_no = #{user_no }
+	        UNION ALL
+	        SELECT  t2.* 
+			FROM bp_user t2
+	        JOIN req_user ON t2.parent = req_user.user_no
+	        )
+		SELECT * FROM req_user where user_no != #{user_no }
+		order by name asc
+	</select>
+	
+	<select id="getUserList" resultType="com.choongang.bcentral.user.vo.UserVo">		
+		with RECURSIVE req_user AS 
+	        (
+	        SELECT * 
+			FROM bp_user t1 
+			WHERE t1.user_no = #{user_no} <!-- 기준 -->
+	        UNION ALL
+	        SELECT  t2.* 
+			FROM bp_user t2
+	        JOIN req_user ON t2.parent = req_user.user_no
+	        )
+		SELECT req_user.*, bp_user.name AS parent_name FROM req_user left join bp_user ON req_user.parent = bp_user.user_no
+			<if test="searchWord !=null">
+				WHERE req_user.user_id iLIKE CONCAT('%',#{searchWord},'%') OR req_user.name iLIKE CONCAT('%',#{searchWord},'%')
+			</if> 
+			<choose>
+				<when test="sidx != null and sidx !='' "> order by	
+	  				<choose>
+					    <when test="sidx eq 'user_id'"> req_user.user_id </when>
+					    <when test="sidx eq 'name'"> req_user.name </when>
+					    <when test="sidx eq 'parent_name'"> bp_user.name </when>
+					    <when test="sidx eq 'last_login' "> req_user.last_login </when>
+			    		<otherwise>req_user.user_no</otherwise>
+	 				</choose> 
+					<choose>
+					    <when test="sord eq 'desc'"> desc </when>
+					    <otherwise> asc </otherwise>
+					</choose>
+				</when>
+				<when test="sidx == '' ">
+					order by req_user.user_id asc
+				</when>
+			</choose> 
+		LIMIT #{rows}   
+		OFFSET (#{page} -1) * #{rows}
+ 	</select>
+ 	
+	<select id="getUserCount" resultType="int">
+ 		with RECURSIVE req_user AS 
+	        (
+	        SELECT * 
+			FROM bp_user t1 
+			WHERE t1.user_no = #{user_no} <!-- 기준 -->
+	        UNION ALL
+	        SELECT  t2.* 
+			FROM bp_user t2
+	        JOIN req_user ON t2.parent = req_user.user_no
+	        )
+		SELECT count(*) FROM req_user
+			<if test="searchWord !=null">
+				where user_id iLIKE CONCAT('%',#{searchWord},'%') OR name iLIKE CONCAT('%',#{searchWord},'%')
+			</if>
+ 	</select>
+
+	<select id="getUser" resultType="com.choongang.bcentral.user.vo.UserVo">
+		select * from bp_user
+		where user_no = #{user_no}
+	</select>
+	
+	<select id="getUserInfo" resultType="com.choongang.bcentral.user.vo.UserVo">
+		select * from bp_user
+		where user_id = #{user_id}
+	</select>
+	
+	<delete id="deleteUser">
+		delete from bp_user
+		where user_no = #{user_no}
+	</delete>
+	
+	<update id="updateUser">
+		update bp_user 
+		set	
+			name=#{name},
+		    phone=#{phone}, 
+			email=#{email}, 
+			dsc=#{dsc}
+			<if test="user_pw != ''">
+				, user_pw=#{user_pw}
+			</if> 
+		where user_no=#{user_no}	
+	</update>
+	
+	<select id="getCountById" resultType="int">
+		select count(*) from bp_user 
+		where user_id = #{user_id}
+	</select>
+	
+	<update id="lastLogin">
+		update bp_user 
+		set last_login = now() 
+		where user_id = #{user_id} 
+	</update>
+	
+	<update id="updateScheduleManager">
+		update bp_schedule set user_no = #{manager }
+		where user_no = #{user_no }
+	</update>
+</mapper>

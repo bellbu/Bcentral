@@ -1,0 +1,57 @@
+@charset "UTF-8";
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+
+
+
+
+.navBar ul .pageList:first-child .imgNav{width: 30px;}
+.navBar ul .pageList:first-child .navTitle{margin-left: 21px;}
+.navTitle{
+    margin-left: 20px;
+}
+.navBox{
+    display: flex;
+    align-items: center;
+    }
+.imgNav{
+    width: 25px;
+}
+a .headerName{color: #fff;}
+.headerName{
+    font-size: 22px;
+    font-weight: 600;
+    font-family: 'Montserrat', sans-serif;
+text-align: left;margin-left: -5px;}
+.navBar{
+    width: 14%;
+    background: #171f46;
+    position: fixed;
+    height: 100%;
+    z-index: 99;
+    color: #fff;
+    padding-top: 15px;
+    }
+
+.navBar ul .pageList{
+    height: 80px;
+    font-size: 17px;
+    font-family: 'Noto Sans KR';
+    font-weight: 400;
+    color: #fff;
+    display: flex;
+	align-items: center;
+	padding-left: 42px;}
+.navBar ul .on{
+    background: #0a102d;
+width: 100%;}
+#content{
+    display: flex;
+    height: 100vh;
+}
+.language2{text-align: center;padding-right: 5px;margin-top: 450px;}
+.language2 .languageBox2{font-size: 18px;display: inline-flex;margin-right: 40px;font-family: 'Montserrat';font-weight: 600;color: #404B66;line-height: 1.5;cursor: pointer;}
+.language2 .languageBox2:last-child{margin-right:0px}
+.language2 .languageBox2 .languageText{}
+.language2 .onn{border-bottom: 3px solid #fff;width: 24px;color: #fff;font-weight: 600;}

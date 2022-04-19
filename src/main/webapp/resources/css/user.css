@@ -1,0 +1,339 @@
+@charset "UTF-8";
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap');
+
+
+
+
+#userBox{width: 100%;background: #fff;border-radius: 10px;height: auto;border: 1px solid #e9e9ee;padding-bottom: 30px;}
+#container{
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: #f2f4f8;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+.writeBtn{
+	width: 85px;
+    height: 45px;
+    font-weight: 400;
+    border: 1px solid #222;
+    border-radius: 7px;
+    cursor: pointer;
+    color: #222;
+	background: #fff;
+	font-size: 16px;
+	transition: 0.3s;
+}
+.writeBtn:hover{
+	background: #171f46;
+	border: 1px solid #171f46;
+    color: #fff;
+}     
+#content{
+    display: flex;
+}
+#box{
+    width: 100%;
+    padding: 1vw 2vw 2vw 16vw;
+}
+
+#modal{
+	display:none;
+	align-items: center;
+	justify-content: center;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	background-color: rgba(0, 0, 0, 0.3);
+	z-index: 99;
+	height: 100%;
+}
+#modal .window {
+   position: relative;
+   width: 100%;
+   height: 100%;
+   overflow: auto;
+   display: flex;
+   align-content: center;
+   justify-content: center;
+   align-items: center;
+   font-size: 13px;
+ }
+#modal .modalBox{
+    width: 600px;
+    background: #fff;
+    justify-content: center;
+    background-color: #ffffff;
+    box-shadow: 0 10px 30px rgb(0 0 0 / 17%);
+    height: auto;
+    align-content: center;
+    border-radius: 10px;
+}
+#modal .modalBox .top{
+    background: #171f46;
+    height: 53px;
+    color: #fff;
+    font-size: 16px;
+    display: flex;
+    justify-content: space-between;
+    padding: 0px 30px 0px 30px;
+    align-items: center;
+    border-radius: 10px 10px 0px 0px;
+}
+#modal .modalBox .top .title{
+	font-size: 16px;
+}
+#modal .modalBox .top .bi-x{
+    font-size: 22px;
+    line-height: 2.4;
+    cursor: pointer;
+}
+
+#modal .modalBox .userInput{
+	padding: 10px 0px 10px 0px;
+	vertical-align: middle;
+}
+#modal .modalBox .userInput:first-child{
+	border-top:none;
+	padding-top: 0px;
+}
+#modal .modalBox .userInput:last-child{border:none}
+#modal .modalBox .userInput .text{
+    font-size: 16px;
+    font-weight: 400;
+    width: 120px;
+    display: inline-flex;
+	align-items: center;
+}
+.star{
+    margin-left: 10px;
+    color: red;
+    vertical-align: middle;
+}
+
+#modal .modalBox .userInput .textBox{
+    border: 1px solid #ccc;
+    height: 40px;
+    width: 380px;
+    padding-left: 10px;
+	font-size: 14px;
+	font-weight: 400;
+	border-radius: 7px;
+}
+
+#modal .modalBox .userInput .input_id{
+    border: 1px solid #ccc;
+    height: 40px;
+    width: 380px;
+    padding-left: 10px;
+	font-size: 14px;
+	font-weight: 400;
+	border-radius: 7px;
+}
+
+.ui-jqgrid .ui-jqgrid-htable{width:100%}
+
+.id_check_button { 
+    margin-left: 5px;height: 40px;
+    width: 80px;
+    font-size: 1em;
+    background: #293042;
+    border: none;
+    color: #fff;
+    outline: none;
+    border-radius: 5px;
+    font-size: 15px;
+}
+#jqgridBox{
+	border-top:none;
+	padding-left:30px;
+padding-right: 30px;}
+#deleteBtn{
+	margin-left:10px
+}
+#top{
+	display: flex;
+	justify-content: space-between;
+	padding: 30px 30px 20px 30px;
+}
+#search{
+	display: flex;
+}
+#search .searchBox{
+	margin-right: 10px;
+}
+#search .searchBox .searchForm{
+	width: 250px;
+	height: 45px;
+	border: #ccc 1px solid;
+	padding-left: 35px;
+	border-radius: 7px;
+	background-image: url(../img/search.png);
+	background-repeat: no-repeat;
+	background-position: 10px;
+	background-size: 17px;
+	font-size: 15px;
+	color: #555;
+	font-weight: 400;
+}
+#gnb{
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 20px;
+    padding: 0px 38px 0px 38px;
+    align-items: center;
+}
+#gnb .icon{}
+.iconBox{
+    display: flex;
+    align-items: center;
+}
+#gnb .icon .iconText{
+	font-size: 16px;
+	font-weight: 500;
+}
+.profile{
+    width: 45px;
+    margin-right: 15px;
+}
+#authority{
+	height: 40px;
+	width: 100px;
+	font-size: 14px;
+	padding-left: 5px;
+	border: 1px solid #ccc;
+	border-radius: 7px;
+	font-weight: 400;
+}
+.btnList{
+	margin-top: 30px;
+	display: flex;
+	justify-content: flex-end;
+	}
+.btnList .btnLi .writeBtn2{
+	width: 80px;
+    height: 40px;
+    font-weight: 400;
+    border: 1px solid #171f46;
+    background: #171f46;
+    border-radius: 7px;
+    cursor: pointer;
+    color: #fff;
+	font-size: 16px;
+	margin-left:10px
+}
+.confirmAlertBox{
+	margin-top: 7px;
+	font-weight:300;
+	font-size: 14px;
+	margin-left: 124px;
+}
+.searchBtn{
+	width: 85px;
+	height: 45px;
+	border: 1px solid #275dea;
+	background: #275dea;
+	border-radius: 7px;
+	color: #fff;
+	font-size: 16px;
+	margin-left: 5px;
+}
+.bottom{
+	padding: 20px 30px 20px 30px;
+}
+#deleteModalBack{
+	display:none;
+	align-items: center;
+	justify-content: center;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	background-color: rgba(0, 0, 0, 0.3);
+	z-index: 99;
+	height: 100%;
+}
+#deleteModalBack .deleteModal{
+	width: 500px;background: #fff;
+    background-color: #ffffff;
+    box-shadow: 0 10px 30px rgb(0 0 0 / 17%);
+    height: 340px;
+    display: flex;
+    align-content: center;
+    border-radius: 10px;
+    overflow: hidden;
+    position: relative;top: 50%;left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    font-size: 17px;
+    text-align: center;
+    justify-content: center;
+
+}
+#deleteModalBack .deleteModal .deleteBox{width: 100%;}
+#deleteModalBack .deleteModal .deleteBox .trash{width: 40px;}
+#deleteModalBack .deleteModal .deleteBox .top{
+	background: #171f46;
+    height: 53px;
+    color: #fff;
+    font-size: 16px;
+    display: flex;
+    justify-content: space-between;
+    padding: 0px 30px 0px 30px;
+	align-items: center;
+	margin-bottom: 35px;
+}
+#deleteModalBack .deleteModal .deleteBox .top .topTitle{
+	font-weight: 400;
+	font-size: 16px;
+}
+#deleteModalBack .deleteModal .deleteBox .top .bi-x{
+	font-size: 22px;
+    line-height: 2.4;
+    cursor: pointer;
+}
+#deleteModalBack .deleteModal .deleteBox .title{
+	font-weight: 500;
+	margin-bottom: 15px;
+	font-size: 21px;
+margin-top: 10px;}
+#deleteModalBack .deleteModal .deleteBox .text{
+	font-weight: 400;
+	margin-top: 20px;
+	font-size: 16px;
+	color: #555;
+line-height: 0.8;}
+#deleteModalBack .deleteModal .deleteBox .selectUserBox{
+	height: 40px;
+    width: 250px;
+    font-size: 15px;
+    padding-left: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-weight: 300;
+    margin-top: 30px;
+ }
+#deleteModalBack .deleteModal .deleteBox .btnList{margin-top: 30px;justify-content: center;margin-bottom: 30px;}
+#deleteModalBack .deleteModal .deleteBox .btnList .btnLi:first-child .writeBtn2{
+	background:#fff;
+	color:#293042;
+	margin-left:0px
+}
+#deleteModalBack .deleteModal .deleteBox .btnList .writeBtn2{}
+#nullData{
+	position: absolute;
+	width: 100%;
+	text-align: center;
+	top: 40%;}
+#nullData .dataI{
+	opacity: 0.2
+}
+#nullData .dataP{
+	font-size: 20px;
+	font-weight: 400;
+	margin-top: 14px;
+	color: #282828;
+}
